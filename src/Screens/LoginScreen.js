@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useFonts } from "expo-font";
+import { useTogglePasswordVisibility } from "../hooks/useTogglePasswordVisibility";
 import {
   StyleSheet,
   Text,
@@ -6,24 +8,23 @@ import {
   TouchableOpacity,
   Alert,
   TextInput,
-  KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
   ImageBackground,
   Pressable,
+  KeyboardAvoidingView,
+  // SafeAreaView,
   //   Dimensions    /* orientation*/
 } from "react-native";
-import { useFonts } from "expo-font";
 // import { MaterialCommunityIcons } from "@expo/vector-icons";          /* icon eye*/
-import { useTogglePasswordVisibility } from "../hooks/useTogglePasswordVisibility";
 
 export default function LoginScreen() {
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
     useTogglePasswordVisibility();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  // const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [loaded] = useFonts({
     RobotoRegulal: require("../../assets/fonts/Roboto-Regular.ttf"),
     RobotoMedium: require("../../assets/fonts/Roboto-Medium.ttf"),
@@ -39,52 +40,52 @@ export default function LoginScreen() {
   const onLogin = () => {
     Alert.alert("Credentials", `${password} + ${email}`);
   };
+  console.log(`${password} + ${email}`);
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <ImageBackground
-          source={require("../../assets/images/photoBg.jpg")}
-          resizeMode="cover"
-          style={styles.imageBackground}
-        ></ImageBackground>
-        <KeyboardAvoidingView
-          behavior={Platform.OS == "ios" ? "padding" : "height"}
-          style={styles.container}
-        >
-          <View style={styles.form}>
-            {/* <View style={{...styles.form, marginBottom: isShowKeyboard ? 32 : 66 }}> */}
-            <Text style={styles.text}>Войти</Text>
-            <View>
-              <TextInput
-                value={email}
-                placeholder={"Адрес электронной почты"}
-                placeholderTextColor="#BDBDBD"
-                onChangeText={emailHandler}
-                // onFocus={()=>{setIsShowKeyboard(true)}}
-                style={styles.input}
-              />
-            </View>
-            <View style={styles.inputWrapper}>
-              <TextInput
-                style={styles.inputPass}
-                value={password}
-                placeholder={"Пароль"}
-                placeholderTextColor="#BDBDBD"
-                onChangeText={passwordHandler}
-                secureTextEntry={passwordVisibility}
-                // onFocus={()=>{setIsShowKeyboard(true)}}
-              />
-              <Pressable onPress={handlePasswordVisibility}>
-                {/* <MaterialCommunityIcons
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        {/* <View style={styles.container}> */}
+          <ImageBackground
+            style={styles.imageBackground}
+            source={require("../../assets/images/photoBg.jpg")}
+          >
+            <View style={styles.form}>
+              {/* <View style={{...styles.form, marginBottom: isShowKeyboard ? 32 : 61 }}> */}
+              <Text style={styles.text}>Войти</Text>
+              <View>
+                <TextInput
+                  style={styles.input}
+                  value={email}
+                  placeholder={"Адрес электронной почты"}
+                  placeholderTextColor="#BDBDBD"
+                  onChangeText={emailHandler}
+                  // onFocus={()=>{setIsShowKeyboard(true)}}
+                />
+              </View>
+              <View style={styles.inputWrapper}>
+                <TextInput
+                  style={styles.inputPass}
+                  value={password}
+                  placeholder={"Пароль"}
+                  placeholderTextColor="#BDBDBD"
+                  onChangeText={passwordHandler}
+                  secureTextEntry={passwordVisibility}
+                  // onFocus={()=>{setIsShowKeyboard(true)}}
+                />
+                <Pressable onPress={handlePasswordVisibility}>
+                  {/* <MaterialCommunityIcons
                   name={rightIcon}
                   size={22}
                   color="#232323"
                 /> */}
-                <Text style={styles.hiden}>Показать</Text>
-              </Pressable>
-            </View>
-            <View>
+                  <Text style={styles.hiden}>Показать</Text>
+                </Pressable>
+              </View>
+
               <TouchableOpacity
                 onPress={onLogin}
                 activeOpacity={0.8}
@@ -92,56 +93,71 @@ export default function LoginScreen() {
               >
                 <Text style={styles.btnTitle}>Войти</Text>
               </TouchableOpacity>
+
+              <View style={styles.wraperTextBottom}>
+                <Text style={styles.textBottom}>Нет аккаунт? </Text>
+                <TouchableOpacity style={styles.btnLogIn} onPress={onLogin}>
+                  <Text style={styles.textBottom}>Зарегистрироваться</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <View style={styles.wraperTextBottom}>
-              <Text style={styles.textBottom}>Нет аккаунт? </Text>
-              <TouchableOpacity style={styles.btnLogIn} onPress={onLogin}>
-                <Text style={styles.textBottom}>Зарегистрироваться</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </KeyboardAvoidingView>
-      </View>
-    </TouchableWithoutFeedback>
+            {/* </View> */}
+          </ImageBackground>
+        {/* </View> */}
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
+
   imageBackground: {
     flex: 1,
-    width: 375,
     height: 812,
+    width: 375,
     resizeMode: "cover",
-    // justifyContent: "center",
-    // alignItems: "center",
+    justifyContent: "flex-end",
+    alignItems: "center",
+
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    width: "100%",
   },
 
   form: {
     height: 549,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    backgroundColor: "#ffff",
+    backgroundColor: "#ffffff",
+    top: 597,
+    // ========================
+    //  alignItems: "center",
+    // justifyContent: "flex-end",
     // marginTop: 263,
     // marginBottom:15,
+
+    // alignItems: "center",
   },
 
   text: {
     color: "#212121",
     fontFamily: "RobotoMedium" /*RobotoRegulal RobotoMedium RobotoBold */,
-    marginBottom: 33,
     fontSize: 30,
     textAlign: "center",
-    marginBottom: 33,
-    marginTop: 92,
+    marginBottom: 32,
+    marginTop: 32,
   },
 
-  inputContainer: {},
+  // inputContainer: {},
 
   input: {
-    // width: 343,
+    width: 343,
     // width: '100%',
     backgroundColor: "#F6F6F6",
     height: 50,
@@ -155,10 +171,11 @@ const styles = StyleSheet.create({
     fontFamily: "RobotoRegulal",
     fontSize: 16,
   },
+
   inputWrapper: {
     backgroundColor: "#F6F6F6",
     // width: '100%',
-    height: 50,
+    // height: 50,
     flexDirection: "row",
     borderRadius: 8,
     paddingHorizontal: 16,
@@ -173,13 +190,13 @@ const styles = StyleSheet.create({
   inputPass: {
     width: "77%",
     fontFamily: "RobotoRegulal",
-    fontSize: 16
+    fontSize: 16,
   },
 
   hiden: {
     color: "#1B4371",
     fontFamily: "RobotoRegulal",
-    fontSize: 16
+    fontSize: 16,
   },
 
   btn: {
@@ -199,23 +216,22 @@ const styles = StyleSheet.create({
   },
 
   wraperTextBottom: {
-    marginBottom: 78,
+    // marginBottom: 132,
     flexDirection: "row",
     // textAlign:"centr",
     justifyContent: "center",
-
     // flexWrap: 'nowrap',
   },
 
-  textBottom: {
-    color: "#212121",
-    fontSize: 16,
-    // textAlign: "center",
-  },
+  // textBottom: {
+  //   color: "#212121",
+  //   fontSize: 16,
+  //   // textAlign: "center",
+  // },
 
-  btnLogIn: {
-    // color: "#212121",
-    // fontSize: 16,
-    // textAlign: "center",
-  },
+  // btnLogIn: {
+  //   // color: "#212121",
+  //   // fontSize: 16,
+  //   // textAlign: "center",
+  // },
 });
