@@ -26,8 +26,6 @@ const initialState = {
 export default function LoginScreen() {
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
     useTogglePasswordVisibility();
-  // const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setstate] = useState(initialState);
   // const [loaded] = useFonts({
