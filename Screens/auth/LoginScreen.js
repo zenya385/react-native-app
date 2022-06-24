@@ -13,10 +13,7 @@ import {
   ImageBackground,
   Pressable,
   KeyboardAvoidingView,
-  // SafeAreaView,
-  //   Dimensions    /* orientation*/
 } from "react-native";
-// import { MaterialCommunityIcons } from "@expo/vector-icons";          /* icon eye*/
 
 const initialState = {
   email: "",
