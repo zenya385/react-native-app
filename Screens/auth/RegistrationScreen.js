@@ -20,7 +20,7 @@ const initialState = {
   password: "",
 };
 
-export default function RegistrationScreen() {
+export default function RegistrationScreen({navigation}) {
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
     useTogglePasswordVisibility();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
@@ -98,7 +98,7 @@ export default function RegistrationScreen() {
 
             <View style={styles.wraperTextBottom}>
               <Text style={styles.textBottom}>Уже есть аккаунт? </Text>
-              <TouchableOpacity style={styles.btnLogIn} onPress={keyboardHide}>
+              <TouchableOpacity style={styles.btnLogIn} onPress={()=>navigation.navigate("Login")}>
                 <Text style={styles.textBottom}>Войти</Text>
               </TouchableOpacity>
             </View>

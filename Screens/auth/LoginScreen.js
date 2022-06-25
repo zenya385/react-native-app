@@ -20,7 +20,8 @@ const initialState = {
   password: "",
 };
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
+  // console.log("navigation", navigation);
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
     useTogglePasswordVisibility();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
@@ -28,8 +29,8 @@ export default function LoginScreen() {
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
-  console.log(state);
-  setstate(initialState)
+    console.log(state);
+    setstate(initialState);
   };
 
   return (
@@ -54,7 +55,8 @@ export default function LoginScreen() {
                 placeholder={"Адрес электронной почты"}
                 placeholderTextColor="#BDBDBD"
                 onChangeText={(value) =>
-                  setstate((prevState) => ({ ...prevState, email: value }))}
+                  setstate((prevState) => ({ ...prevState, email: value }))
+                }
                 // onFocus={()=>{setIsShowKeyboard(true)}}
               />
             </View>
@@ -65,7 +67,8 @@ export default function LoginScreen() {
                 placeholder={"Пароль"}
                 placeholderTextColor="#BDBDBD"
                 onChangeText={(value) =>
-                  setstate((prevState) => ({ ...prevState, password: value }))}
+                  setstate((prevState) => ({ ...prevState, password: value }))
+                }
                 secureTextEntry={passwordVisibility}
                 // onFocus={()=>{setIsShowKeyboard(true)}}
               />
@@ -81,10 +84,10 @@ export default function LoginScreen() {
             >
               <Text style={styles.btnTitle}>Войти</Text>
             </TouchableOpacity>
-            
+
             <View style={styles.wraperTextBottom}>
               <Text style={styles.textBottom}>Нет аккаунт? </Text>
-              <TouchableOpacity style={styles.btnLogIn} onPress={keyboardHide}>
+              <TouchableOpacity  onPress={()=>navigation.navigate("Register")}>
                 <Text style={styles.textBottom}>Зарегистрироваться</Text>
               </TouchableOpacity>
             </View>
@@ -159,7 +162,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     marginHorizontal: 16,
   },
-  
+
   inputPass: {
     width: "77%",
     fontFamily: "RobotoRegulal",
