@@ -25,24 +25,12 @@ export default function LoginScreen() {
     useTogglePasswordVisibility();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setstate] = useState(initialState);
-  // const [loaded] = useFonts({
-  //   RobotoRegulal: require("../../assets/fonts/Roboto-Regular.ttf"),
-  //   RobotoMedium: require("../../assets/fonts/Roboto-Medium.ttf"),
-  //   RobotoBold: require("../../assets/fonts/Roboto-Bold.ttf"),
-  // });
-  // if (!loaded) {
-  //   return null;
-  // }
-
-  // const passwordHandler = (text) => setPassword(text);
-  // const emailHandler = (text) => setEmail(text);
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
   console.log(state);
   setstate(initialState)
   };
-
 
   return (
     <KeyboardAvoidingView
@@ -82,11 +70,6 @@ export default function LoginScreen() {
                 // onFocus={()=>{setIsShowKeyboard(true)}}
               />
               <Pressable onPress={handlePasswordVisibility}>
-                {/* <MaterialCommunityIcons
-                  name={rightIcon}
-                  size={22}
-                  color="#232323"
-                /> */}
                 <Text style={styles.hiden}>Показать</Text>
               </Pressable>
             </View>
@@ -98,7 +81,7 @@ export default function LoginScreen() {
             >
               <Text style={styles.btnTitle}>Войти</Text>
             </TouchableOpacity>
-
+            
             <View style={styles.wraperTextBottom}>
               <Text style={styles.textBottom}>Нет аккаунт? </Text>
               <TouchableOpacity style={styles.btnLogIn} onPress={keyboardHide}>
@@ -176,6 +159,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     marginHorizontal: 16,
   },
+  
   inputPass: {
     width: "77%",
     fontFamily: "RobotoRegulal",

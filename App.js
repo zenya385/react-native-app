@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { } from 'react-native';
-import RegistrationScreen from "./Screens/auth/RegistrationScreen";
-import LoginScreen from './Screens/auth/LoginScreen';
+import RegistrationScreen from "./screens/auth/RegistrationScreen";
+import LoginScreen from './screens/auth/LoginScreen';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
@@ -18,11 +19,11 @@ export default function App() {
   }
  
   return (
-    <>
+    <NavigationContainer>
       <StatusBar style="dark-content"/>    
      {/* <RegistrationScreen/> */}
      <LoginScreen/>
-    </>
+    </NavigationContainer>
   );
 }
 
