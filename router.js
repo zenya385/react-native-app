@@ -17,8 +17,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 
-import { FontAwesome5 } from '@expo/vector-icons'; 
 // import Home from './screens/mainScreen/Home';
+// import { FontAwesome5 } from '@expo/vector-icons'; 
 // <FontAwesome5 name="trash-alt" size={24} color="black" />
 
 // import { Feather } from '@expo/vector-icons'; 
@@ -54,8 +54,9 @@ export const useRoute = (isAuth) => {
       );
     }
     return (
-      <MainTab.Navigator tabBarOptions={{showLabel:false}}  >
+      <MainTab.Navigator screenOptions={{tabBarShowLabel:false}}  >
         <MainTab.Screen
+        activeColor="#f0edf6"
           options={{tabBarIcon:({focused, size, color})  => <AntDesign name="appstore-o" size={size} color={color} />
         }}
           name="Публикации"
@@ -78,3 +79,6 @@ export const useRoute = (isAuth) => {
       </MainTab.Navigator>
     );
   };
+
+
+

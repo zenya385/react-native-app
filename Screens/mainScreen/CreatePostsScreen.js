@@ -10,7 +10,14 @@ import { Camera } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import { TextInput } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
-// <Feather name="map-pin" size={24} color="black" />
+
+import { FontAwesome5 } from "@expo/vector-icons";
+{
+  /* <FontAwesome5 name="trash-alt" size={24} color="black" /> */
+}
+{
+  /* <Feather name="map-pin" size={24} color="black" /> */
+}
 
 export default function CreatePostsScreen() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -35,9 +42,9 @@ export default function CreatePostsScreen() {
 
   return (
     <KeyboardAvoidingView
+      style={styles.container}
       behavior={Platform.OS == "ios" ? "padding" : "height"}
       keyboardVerticalOffset={-105}
-      style={styles.container}
     >
       <Camera
         style={styles.camera}
@@ -67,7 +74,7 @@ export default function CreatePostsScreen() {
             onPress={async () => {
               if (cameraRef) {
                 const { uri } = await cameraRef.takePictureAsync();
-                await MediaLibrary.createAssetAsync(uri);
+                // await MediaLibrary.createAssetAsync(uri);
               }
             }}
           >
@@ -101,7 +108,10 @@ export default function CreatePostsScreen() {
           // onFocus={()=>{setIsShowKeyboard(true)}}
         />
         <TouchableOpacity style={styles.sendBtn}>
-            <Text>Опубликовать</Text>
+          <Text style={styles.sendBtnText}>Опубликовать</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.deleteBtn}>
+          <FontAwesome5 name="trash-alt" size={24} color="#BDBDBD" />
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -109,7 +119,10 @@ export default function CreatePostsScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+  },
   camera: {
     // flex: 1,
     width: 343,
@@ -176,12 +189,30 @@ const styles = StyleSheet.create({
     borderBottomColor: "#BDBDBD",
   },
 
-  sendBtn:{
-    marginHorizontal:16,
+  sendBtn: {
+    marginHorizontal: 16,
     height: 50,
     backgroundColor: "#F6F6F6",
     borderRadius: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 32,
+  },
+  sendBtnText: {
+    color: "#BDBDBD",
+    fontFamily: "RobotoMedium",
+    fontSize: 16,
+  },
 
-
-  }
+  deleteBtn: {
+    marginHorizontal: 16,
+    height: 51,
+    width: 70,
+    backgroundColor: "#F6F6F6",
+    borderRadius: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 72,
+    marginHorizontal: 152,
+  },
 });

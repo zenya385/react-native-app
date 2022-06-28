@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: 343,
+    // width: 343,
     backgroundColor: "#F6F6F6",
     height: 50,
     flexDirection: "row",

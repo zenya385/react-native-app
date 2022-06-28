@@ -28,7 +28,7 @@ export default function RegistrationScreen({navigation}) {
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
-    console.log(state);
+    // console.log(state);
     setstate(initialState);
   };
 
@@ -45,7 +45,7 @@ export default function RegistrationScreen({navigation}) {
           source={require("../../assets/images/photoBg.jpg")}
         >
           {/* <View style={styles.form}> */}
-            <View style={{...styles.form, marginBottom: isShowKeyboard ? 32 : 43 }}>
+            <View style={{...styles.form, marginBottom: isShowKeyboard ? 73 : 23 }}>
             <Text style={styles.text}>Регистрация</Text>
             <View>
               <TextInput
@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: "#ffff",
-    paddingBottom: 78,
-    top: 131,
+    paddingBottom: 70,
+    top: 151,   /* 131 */ 
   },
 
   text: {
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: 343,
+    // width: 343,
     backgroundColor: "#F6F6F6",
     height: 50,
     flexDirection: "row",
