@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useIsFocused } from '@react-navigation/native';
 
 import { useTogglePasswordVisibility } from "../../hooks/useTogglePasswordVisibility";
 import {
@@ -22,9 +23,12 @@ const initialState = {
 
 export default function LoginScreen({ navigation }) {
   // console.log("navigation", navigation);
+  // const isFocused = useIsFocused();
+
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
     useTogglePasswordVisibility();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  // const [isFocused, useIsFocused] = useIsFocused(true);
   const [state, setstate] = useState(initialState);
   const keyboardHide = () => {
     setIsShowKeyboard(false);
@@ -50,14 +54,14 @@ export default function LoginScreen({ navigation }) {
             <Text style={styles.text}>Войти</Text>
             <View>
               <TextInput
-                style={styles.input}
+                style={styles.input}    /*   {...styles.input, borderColor: isFocused ?   "#000" :"#FF6C00" }  */ 
                 value={state.email}
                 placeholder={"Адрес электронной почты"}
-                placeholderTextColor="#BDBDBD"
+                placeholderTextColor={"#BDBDBD"}
                 onChangeText={(value) =>
                   setstate((prevState) => ({ ...prevState, email: value }))
                 }
-                // onFocus={()=>{setIsShowKeyboard(true)}}
+                // onFocus={()=>{useIsFocused()}}
               />
             </View>
             <View style={styles.inputWrapper}>

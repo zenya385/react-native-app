@@ -18,14 +18,23 @@ import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 
 import { FontAwesome5 } from '@expo/vector-icons'; 
-<FontAwesome5 name="trash-alt" size={24} color="black" />
+// import Home from './screens/mainScreen/Home';
+// <FontAwesome5 name="trash-alt" size={24} color="black" />
 
 // import { Feather } from '@expo/vector-icons'; 
 // <Feather name="log-out" size={24} color="black" />
 
+// import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+// <MaterialCommunityIcons name="arrow-left" size={24} color="black" />
 
+// import { Feather } from '@expo/vector-icons'; 
+// <Feather name="map-pin" size={24} color="black" />
 
+// import { Feather } from '@expo/vector-icons'; 
+// <Feather name="message-circle" size={24} color="black" /> 
 
+// import { Feather } from '@expo/vector-icons'; 
+// <Feather name="thumbs-up" size={24} color="black" />
 
 export const useRoute = (isAuth) => {
     if (!isAuth) {
@@ -45,7 +54,7 @@ export const useRoute = (isAuth) => {
       );
     }
     return (
-      <MainTab.Navigator tabBarOptions={{showLabel:false}} >
+      <MainTab.Navigator tabBarOptions={{showLabel:false}}  >
         <MainTab.Screen
           options={{tabBarIcon:({focused, size, color})  => <AntDesign name="appstore-o" size={size} color={color} />
         }}
@@ -60,11 +69,12 @@ export const useRoute = (isAuth) => {
         />
         <MainTab.Screen
           options={{tabBarIcon:({focused, size, color}) => <Feather name="user" size={24} color={color} />
-
         }}
           name="Profile"
           component={ProfileScreen}
         />
+   
+         
       </MainTab.Navigator>
     );
   };

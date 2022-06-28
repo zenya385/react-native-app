@@ -14,7 +14,7 @@ import { useRoute } from "./router";
 
 
 export default function App() {
-const routing = useRoute({});
+const routing = useRoute({});    /*============================    {}      null    */ 
   const [loaded] = useFonts({
     RobotoRegular: require("./assets/fonts/Roboto-Regular.ttf"),
     RobotoMedium: require("./assets/fonts/Roboto-Medium.ttf"),
