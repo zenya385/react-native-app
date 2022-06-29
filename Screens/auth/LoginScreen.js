@@ -28,7 +28,7 @@ export default function LoginScreen({ navigation }) {
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
     useTogglePasswordVisibility();
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
-  // const [isFocused, useIsFocused] = useIsFocused(true);
+  const [isFocused, setIsFocused] = useIsFocused();
   const [state, setstate] = useState(initialState);
   const keyboardHide = () => {
     setIsShowKeyboard(false);
@@ -54,15 +54,16 @@ export default function LoginScreen({ navigation }) {
             <Text style={styles.text}>Войти</Text>
             <View>
               <TextInput
-                style={styles.input}    /*   {...styles.input, borderColor: isFocused ?   "#000" :"#FF6C00" }  */ 
+               style={styles.input}    /*style= {{...styles.input, borderColor: isFocused ? "#E8E8E8" :"#FF6C00" }}*/
                 value={state.email}
                 placeholder={"Адрес электронной почты"}
                 placeholderTextColor={"#BDBDBD"}
                 onChangeText={(value) =>
                   setstate((prevState) => ({ ...prevState, email: value }))
                 }
-                // onFocus={()=>{useIsFocused()}}
-              />
+                onFocus={()=>{setIsFocused(true)}}
+                />
+                
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
