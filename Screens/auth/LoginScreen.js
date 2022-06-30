@@ -22,7 +22,7 @@ const initialState = {
 };
 
 export default function LoginScreen({ navigation }) {
-  // console.log("navigation", navigation);
+  console.log("navigation", navigation);
   // const isFocused = useIsFocused();
 
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
